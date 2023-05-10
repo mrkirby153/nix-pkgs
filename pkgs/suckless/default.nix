@@ -4,4 +4,5 @@ in {
   dmenu = callPackage ./dmenu.nix {};
   st = callPackage ./st.nix {};
   dwm = callPackage ./dwm.nix {};
+  dwmblocks = callPackage ./dwmblocks.nix {};
 }
