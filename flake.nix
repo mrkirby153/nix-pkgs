@@ -28,15 +28,9 @@
       in
         pkgs.lib.concatLists [leaves (pkgs.lib.concatLists nonLeavesLeaves)]
     );
+    allPkgs = builtins.listToAttrs (builtins.map (pkg: pkgs.lib.nameValuePair pkg.name pkg) (getLeaves myPkgs));
   in {
-    packages.x86_64-linux =
-      myPkgs
-      // {
-        _all = pkgs.symlinkJoin {
-          name = "all";
-          paths = (getLeaves myPkgs);
-        };
-      };
+    packages.x86_64-linux = allPkgs;
 
     formatter.x86_64-linux = pkgs.alejandra;
   };
