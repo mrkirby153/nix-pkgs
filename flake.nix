@@ -32,6 +32,16 @@
   in {
     packages.x86_64-linux = allPkgs;
 
+    apps.x86_64-linux = 
+    let
+      build-all = pkgs.callPackage ./apps/build_all.nix { inherit pkgs; };
+    in {
+      build-all = {
+        type = "app";
+        program = "${build-all}/bin/build_all.py";
+      };
+    };
+
     formatter.x86_64-linux = pkgs.alejandra;
   };
 }
