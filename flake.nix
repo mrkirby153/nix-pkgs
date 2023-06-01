@@ -29,6 +29,9 @@
         pkgs.lib.concatLists [leaves (pkgs.lib.concatLists nonLeavesLeaves)]
     );
     allPkgs = builtins.listToAttrs (builtins.map (pkg: pkgs.lib.nameValuePair pkg.name pkg) (getLeaves myPkgs));
+    overlay = final: prev: {
+      aus = allPkgs;
+    };
   in {
     packages.x86_64-linux = allPkgs;
 
@@ -41,6 +44,8 @@
         program = "${build-all}/bin/build_all.py";
       };
     };
+
+    overlays.default = overlay;
 
     formatter.x86_64-linux = pkgs.alejandra;
   };
