@@ -3,15 +3,14 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs";
-    flake-compat = {
-      url = "github:edolstra/flake-compat";
-      flake = false;
+    neovim = {
+      url = "github:mrkirby153/nvim";
     };
   };
   outputs = {
     self,
     nixpkgs,
-    flake-compat,
+    neovim,
   }: let
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
     myPkgs = import ./pkgs {
@@ -28,7 +27,9 @@
       in
         pkgs.lib.concatLists [leaves (pkgs.lib.concatLists nonLeavesLeaves)]
     );
-    allPkgs = builtins.listToAttrs (builtins.map (pkg: pkgs.lib.nameValuePair pkg.name pkg) (getLeaves myPkgs));
+    allPkgs = builtins.listToAttrs (builtins.map (pkg: pkgs.lib.nameValuePair pkg.name pkg) (getLeaves myPkgs)) // {
+      nvim = neovim.packages.x86_64-linux.default;
+    };
     overlay = final: prev: {
       aus = allPkgs;
     };
