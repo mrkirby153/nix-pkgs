@@ -16,5 +16,4 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "Auto update neovim"
-          commit_author: "Github Actions <actions@github.com>"
           file_pattern: "flake.lock"
