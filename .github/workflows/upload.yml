@@ -1,6 +1,9 @@
 name: "Upload to Cachix"
 on:
   push:
+    paths:
+      - '**.nix'
+      - 'flake.lock'
 jobs:
   upload:
     runs-on: ubuntu-latest
