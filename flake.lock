@@ -133,11 +133,11 @@
         "vaffle-src": "vaffle-src"
       },
       "locked": {
-        "lastModified": 1686589705,
-        "narHash": "sha256-rCrqcanoGq98LPE1DvH6gV0slLV4lD+RpE88YqB7p4g=",
+        "lastModified": 1686625377,
+        "narHash": "sha256-w5WJWctqooaa6zHU5e6keRZ2U9AOSulkA/pc0CO7Jlg=",
         "owner": "mrkirby153",
         "repo": "nvim",
-        "rev": "b7ee1553e253005cea2fcbd408dceab0cceabe08",
+        "rev": "411ce0bb51ffcb746731a42b4f5f89246f2f2448",
         "type": "github"
       },
       "original": {
