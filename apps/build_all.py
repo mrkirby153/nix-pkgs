@@ -25,11 +25,11 @@ def get_repo_root() -> Path:
 
 
 def get_derivations(data) -> Iterable[List[str]]:
-    for v in data.values():
+    for k, v in data.items():
         if not isinstance(v, dict):
             continue  # Not a dict, skip
         if v.get("type") == "derivation":
-            yield v["name"]
+            yield k
         else:
             yield from get_derivations(v)
 
