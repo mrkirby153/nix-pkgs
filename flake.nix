@@ -3,10 +3,15 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs";
+    nvim = {
+      url = "github:mrkirby153/nvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = {
     self,
     nixpkgs,
+    nvim,
   }: let
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
     myPkgs = import ./pkgs {
@@ -23,7 +28,9 @@
       in
         pkgs.lib.concatLists [leaves (pkgs.lib.concatLists nonLeavesLeaves)]
     );
-    allPkgs = builtins.listToAttrs (builtins.map (pkg: pkgs.lib.nameValuePair pkg.name pkg) (getLeaves myPkgs));
+    allPkgs = builtins.listToAttrs (builtins.map (pkg: pkgs.lib.nameValuePair pkg.name pkg) (getLeaves myPkgs)) // {
+      nvim = nvim.packages.x86_64-linux.default;
+    };
     overlay = final: prev: {
       aus = allPkgs;
     };
