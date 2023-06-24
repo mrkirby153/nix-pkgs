@@ -12,7 +12,7 @@
     self,
     nixpkgs,
     nvim,
-  }: let
+  }@inputs : let
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
     myPkgs = import ./pkgs {
       inherit pkgs;
@@ -50,5 +50,7 @@
     overlays.default = overlay;
 
     formatter.x86_64-linux = pkgs.alejandra;
+
+    hydraJobs = import ./hydra.nix { inherit inputs; outputs = self.outputs; };
   };
 }

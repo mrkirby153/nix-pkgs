@@ -3,6 +3,7 @@
   name,
   extraDeps ? [],
   preBuild ? "",
+  extraMeta ? {},
   ...
 }: let
   inherit (pkgs) stdenv;
@@ -42,4 +43,8 @@ in
         cd source
         make
       '';
+    meta = with pkgs.lib; {
+      license = licenses.mit;
+      platforms = platforms.linux;
+    } // extraMeta;
   }
