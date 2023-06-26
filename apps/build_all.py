@@ -51,7 +51,13 @@ if __name__ == "__main__":
     for derivation in derivations:
         print(f"== Building Derivation: {derivation} ==")
         run(
-            ["nix", "build", "--no-link", f"{repo_root}#{derivation}"],
+            [
+                "nix",
+                "build",
+                "--no-link",
+                "--print-build-logs",
+                f"{repo_root}#{derivation}",
+            ],
             cwd=repo_root,
             check=True,
         )
