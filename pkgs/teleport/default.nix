@@ -10,7 +10,4 @@ callPackage "${inputs.nixpkgs}/pkgs/servers/teleport/generic.nix" ({
       "rdp-rs-0.1.0" = "sha256-n4x4w7GZULxqaR109das12+ZGU0xvY3wGOTWngcwe4M=";
     };
   };
-  AppKit = null;
-  CoreFoundation = null;
-  Security = null;
 } // builtins.removeAttrs args [ "callPackage" "inputs" ])

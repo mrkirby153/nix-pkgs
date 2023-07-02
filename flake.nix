@@ -2,7 +2,7 @@
   description = "Flake for my packages";
 
   inputs = {
-    nixpkgs.url = "nixpkgs";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nvim = {
       url = "github:mrkirby153/nvim";
       inputs.nixpkgs.follows = "nixpkgs";

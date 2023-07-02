@@ -5,5 +5,8 @@ with pkgs; {
   dwm = callPackage ./suckless/dwm.nix {};
   dwmblocks = callPackage ./suckless/dwmblocks.nix {};
   nvim = inputs.nvim.packages.${pkgs.stdenv.system}.default;
-  teleport = callPackage ./teleport { inherit inputs;};
+  teleport = callPackage ./teleport { 
+    inherit inputs;
+    inherit (pkgs.darwin.apple_sdk.frameworks) AppKit CoreFoundation Security;
+  };
 }
