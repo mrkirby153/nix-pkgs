@@ -3,15 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nvim = {
-      url = "github:mrkirby153/nvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
   outputs = {
     self,
     nixpkgs,
-    nvim,
   }@inputs : let
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
     allPkgs = import ./pkgs { inherit pkgs; inherit inputs; };
