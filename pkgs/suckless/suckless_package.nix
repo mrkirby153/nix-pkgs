@@ -43,8 +43,10 @@ in
         cd source
         make
       '';
-    meta = with pkgs.lib; {
-      license = licenses.mit;
-      platforms = platforms.linux;
-    } // extraMeta;
+    meta = with pkgs.lib;
+      {
+        license = licenses.mit;
+        platforms = platforms.linux;
+      }
+      // extraMeta;
   }
