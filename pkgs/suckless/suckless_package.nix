@@ -9,8 +9,8 @@
   inherit (pkgs) stdenv;
   repoBase = pkgs.fetchgit {
     url = "https://github.com/mrkirby153/suckless";
-    rev = "c3ef35ea2c70181947cec6745f8ada264e7b89c7";
-    sha256 = "sha256-UwsPmtFe/YuyS3m5oxbj6776+nPOhbCNDj71+7bUHOo=";
+    rev = "6b47559e5203d30ef2197b5e70f77dd1ea0e4721";
+    sha256 = "sha256-ygshrB+P/PLrB1aMetMa12HilwTHqQbd9xvH2qkaM9Q=";
     fetchSubmodules = true;
   };
 in
