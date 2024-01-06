@@ -12,4 +12,7 @@ with pkgs; {
     inherit inputs;
     inherit (pkgs.darwin.apple_sdk.frameworks) AppKit CoreFoundation Security;
   };
+  discord-canary-fsh = callPackage ./discord-fsh {branch = "canary";};
+  discord-ptb-fsh = callPackage ./discord-fsh {branch = "ptb";};
+  discord-fsh = callPackage ./discord-fsh {};
 }

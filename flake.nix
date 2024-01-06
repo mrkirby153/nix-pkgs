@@ -8,10 +8,10 @@
     self,
     nixpkgs,
   } @ inputs: let
-    pkgs = 
-      import nixpkgs {
-        system = "x86_64-linux";
-      };
+    pkgs = import nixpkgs {
+      system = "x86_64-linux";
+      config.allowUnfree = true;
+    };
 
     allPkgs = import ./pkgs {
       inherit pkgs;
