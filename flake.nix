@@ -2,15 +2,18 @@
   description = "Flake for my packages";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    rust-overlay.url = "github:oxalica/rust-overlay";
   };
   outputs = {
     self,
     nixpkgs,
+    rust-overlay,
   } @ inputs: let
     pkgs = 
       import nixpkgs {
         system = "x86_64-linux";
+        overlays = [rust-overlay.overlays.default];
       };
 
     allPkgs = import ./pkgs {
