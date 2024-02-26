@@ -43,5 +43,9 @@
       inherit inputs;
       outputs = self.outputs;
     };
+
+    devShells.x86_64-linux.default = pkgs.mkShell {
+      buildInputs = with pkgs; [nix-update];
+    };
   };
 }
