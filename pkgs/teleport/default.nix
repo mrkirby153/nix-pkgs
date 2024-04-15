@@ -2,7 +2,7 @@
 callPackage ./generic.nix (rec {
   version = "15.1.10";
   hash = "sha256-XAjfHAHgwGV3QX9BnnPe2NamXrnjWFNK1sUMR+UdEao=";
-  vendorHash = "sha256-y/umi3H5YZwHE8mnsz2Dq/+RxCMYOBB2InH3Di3sHOI=";
+  vendorHash = "sha256-SrAuGrLI25/d/4as/GlXO5mAfWMXvryaro16zHIq6K8=";
   yarnHash = "sha256-4XV2wlXbSiPSG0gGw1DguIEBxwpFyKHEyyC4s3ggsjs=";
   cargoLock = {
     lockFile = builtins.fetchurl {
