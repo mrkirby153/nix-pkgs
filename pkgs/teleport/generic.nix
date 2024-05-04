@@ -19,6 +19,7 @@
 , nixosTests
 , rust-bin
 , wasm-bindgen-cli
+, fixup-yarn-lock
 
 , withRdpClient ? true
 
@@ -100,6 +101,7 @@ let
       nodejs
       yarn
       prefetch-yarn-deps
+      fixup-yarn-lock
     ];
     buildInputs = [
       wasm-pack
