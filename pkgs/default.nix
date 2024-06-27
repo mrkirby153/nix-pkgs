@@ -3,13 +3,14 @@
   inputs,
   ...
 }:
-with pkgs; {
+with pkgs; rec {
   dmenu = callPackage ./suckless/dmenu.nix {};
   st = callPackage ./suckless/st.nix {};
   dwm = callPackage ./suckless/dwm.nix {};
   dwmblocks = callPackage ./suckless/dwmblocks.nix {};
-  teleport = callPackage ./teleport {
+  teleport_16 = callPackage ./teleport {
     inherit inputs;
     inherit (pkgs.darwin.apple_sdk.frameworks) AppKit CoreFoundation Security;
   };
+  teleport = teleport_16;
 }

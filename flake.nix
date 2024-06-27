@@ -3,19 +3,17 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    rust-overlay.url = "github:oxalica/rust-overlay";
     flake-compat.url = "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz";
   };
   outputs = {
     self,
     nixpkgs,
-    rust-overlay,
     flake-compat,
   } @ inputs: let
     pkgs = 
       import nixpkgs {
         system = "x86_64-linux";
-        overlays = [rust-overlay.overlays.default];
+        overlays = [];
       };
 
     allPkgs = import ./pkgs {
