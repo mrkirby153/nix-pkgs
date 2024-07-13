@@ -13,4 +13,6 @@ with pkgs; rec {
     inherit (pkgs.darwin.apple_sdk.frameworks) AppKit CoreFoundation Security;
   };
   teleport = teleport_16;
+  textual-autocomplete = callPackage ./py/textual-autocomplete.nix {};
+  posting = callPackage ./py/posting.nix {};
 }
