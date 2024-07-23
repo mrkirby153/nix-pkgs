@@ -4,7 +4,7 @@ let
 in
 python3.pkgs.buildPythonApplication rec {
   pname = "posting";
-  version = "1.1.0";
+  version = "1.8.0";
 
   pyproject = true;
 
@@ -12,7 +12,7 @@ python3.pkgs.buildPythonApplication rec {
     owner = "darrenburns";
     repo = "posting";
     rev = version;
-    hash = "sha256-kvRYS1tFBWWpXm47fa/zDhE4WjJqNsaWRrGU+lcBcys=";
+    hash = "sha256-pLL6jBdgdrlltM0qqqCZy/bDJ0uAx9NoU0K05zUs1vM=";
   };
 
   build-system = [
