@@ -11,6 +11,8 @@ SYSTEM = "x86_64-linux"
 
 TO_BUILD = ["devShells", "packages"]
 
+DERIVATION_FORMAT = {"devShells": "devShells.%s.%s", "packages": "packages.%s.%s"}
+
 
 @lru_cache
 def get_flake() -> Dict[str, Any]:
@@ -37,7 +39,9 @@ def get_derivations(data) -> Iterable[List[str]]:
 def get_buildable_derivations(data) -> Iterable[List[str]]:
     for output_type in TO_BUILD:
         if flake.get(output_type):
-            yield from get_derivations(flake[output_type][SYSTEM])
+            yield from map(
+                lambda x: (output_type, x), get_derivations(flake[output_type][SYSTEM])
+            )
 
 
 if __name__ == "__main__":
@@ -48,7 +52,14 @@ if __name__ == "__main__":
     derivations = list(get_buildable_derivations(flake))
     print(f"Building {len(derivations)} derivations")
 
-    for derivation in derivations:
+    for derivation_type, derivation in derivations:
+        assert (
+            derivation_type in TO_BUILD
+        ), f"Unknown derivation type: {derivation_type}"
+        derivation_format = DERIVATION_FORMAT[derivation_type]
+
+        derivation = derivation_format % (SYSTEM, derivation)
+
         print(f"== Building Derivation: {derivation} ==")
         run(
             [
