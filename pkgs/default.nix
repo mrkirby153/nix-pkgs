@@ -5,6 +5,7 @@
 }:
 with pkgs; rec {
   dmenu = callPackage ./suckless/dmenu.nix {};
+  kometa = callPackage ./py/kometa.nix {};
   st = callPackage ./suckless/st.nix {};
   dwm = callPackage ./suckless/dwm.nix {};
   dwmblocks = callPackage ./suckless/dwmblocks.nix {};
