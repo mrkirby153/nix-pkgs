@@ -66,6 +66,7 @@ stdenv.mkDerivation rec {
     cp -r $src $out/lib
     echo "#!${pythonEnvironment}/bin/python3" > $out/bin/kometa
     cat $src/kometa.py >> $out/bin/kometa
+    cp $src/VERSION $out/bin/VERSION
     chmod +x $out/bin/kometa
     wrapProgram $out/bin/kometa --prefix PYTHONPATH : $out/lib
   '';
