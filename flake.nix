@@ -10,11 +10,10 @@
     nixpkgs,
     flake-compat,
   } @ inputs: let
-    pkgs = 
-      import nixpkgs {
-        system = "x86_64-linux";
-        overlays = [];
-      };
+    pkgs = import nixpkgs {
+      system = "x86_64-linux";
+      overlays = [];
+    };
 
     allPkgs = import ./pkgs {
       inherit pkgs;

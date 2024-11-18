@@ -1,8 +1,8 @@
-{ lib
-, python3
-, fetchFromGitHub
+{
+  lib,
+  python3,
+  fetchFromGitHub,
 }:
-
 python3.pkgs.buildPythonPackage rec {
   pname = "textual-autocomplete";
   version = "3.0.0a9";
@@ -24,12 +24,12 @@ python3.pkgs.buildPythonPackage rec {
     python3.pkgs.typing-extensions
   ];
 
-  pythonImportsCheck = [ "textual_autocomplete" ];
+  pythonImportsCheck = ["textual_autocomplete"];
 
   meta = {
     description = "Easily add autocomplete dropdowns to your Textual apps";
     homepage = "https://github.com/darrenburns/textual-autocomplete";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [ taha-yassine ];
+    maintainers = with lib.maintainers; [taha-yassine];
   };
 }
