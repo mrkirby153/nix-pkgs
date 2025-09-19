@@ -39,6 +39,7 @@
   pythonEnvironment = python3.withPackages (ps:
     with ps;
       [
+        cloudscraper
         gitpython
         lxml
         num2words
@@ -53,6 +54,7 @@
         ruamel-yaml
         schedule
         setuptools
+        tenacity
       ]
       ++ (builtins.attrValues asPackages));
 in
@@ -77,6 +79,7 @@ in
       echo "#!${pythonEnvironment}/bin/python3" > $out/bin/kometa
       cat $src/kometa.py >> $out/bin/kometa
       cp $src/VERSION $out/bin/VERSION
+      cp $src/PART $out/bin/PART
       chmod +x $out/bin/kometa
       wrapProgram $out/bin/kometa --prefix PYTHONPATH : $out/lib
     '';
