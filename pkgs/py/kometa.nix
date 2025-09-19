@@ -13,8 +13,8 @@
       ];
     };
     tmdbapis = {
-      version = "1.2.16";
-      hash = "sha256-Icq777zrPWpTmYxV9RqofCThGBdrGHfKaHBcuyp/oi4=";
+      version = "1.2.28";
+      hash = "sha256-mSK9c1PDBjR/j+ROHBMe0sYo4TD8cm8bqnhKPbNcRtw=";
       deps = [
         requests
       ];
@@ -31,6 +31,8 @@
         hash = value.hash;
       };
       propagatedBuildInputs = value.deps;
+      build-system = [python3.pkgs.setuptools];
+      pyproject = true;
     })
   extra_dependencies;
 
@@ -56,13 +58,13 @@
 in
   stdenv.mkDerivation rec {
     pname = "kometa";
-    version = "2.0.2";
+    version = "2.2.1";
 
     src = fetchFromGitHub {
       owner = "Kometa-Team";
       repo = "Kometa";
       rev = "v${version}";
-      hash = "sha256-RfDTtQyINiEwtEq61uNzcAduitaUq1dJ+XVltyy+iDU=";
+      hash = "sha256-2RmnnKQRVL1/WYD2tL9GBVF8n1n6EGp835l+Z+Bn7Hk=";
     };
 
     nativeBuildInputs = [
